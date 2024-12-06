@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "3000:3000" # Mapper le port 3000 du conteneur au port 3000 de l'hôte
+    volumes:
+      - ./backend:/app # Monter le backend local pour faciliter le développement
+    environment:
+      - MYSQL_HOST=db
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=password
+      - MYSQL_DATABASE=book_management
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "8080:80" # Mapper le port 80 du conteneur au port 8080 de l'hôte
+    volumes:
+      - ./frontend:/usr/share/nginx/html
+
+  db:
+    image: mysql:8
+    ports:
+      - "3306:3306" # Mapper le port 3306 pour MySQL
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: book_management
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
