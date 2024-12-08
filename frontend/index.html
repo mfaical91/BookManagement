@@ -1,0 +1,52 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion de Livres</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Gestion de Livres</h1>
+        <nav>
+            <button id="loginUser">Login User</button>
+            <button id="loginAdmin">Login Admin</button>
+            <button id="logout" style="display: none;">Logout</button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="bookList">
+            <h2>Liste des Livres</h2>
+            <table id="booksTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Titre</th>
+                        <th>Texte</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Les livres seront chargés ici dynamiquement -->
+                </tbody>
+            </table>
+        </section>
+
+        <section id="adminControls" style="display: none;">
+            <h2>Ajouter un Livre</h2>
+            <form id="addBookForm">
+                <label for="title">Titre:</label>
+                <input type="text" id="title" name="title" required>
+                <label for="text">Texte:</label>
+                <textarea id="text" name="text" required></textarea>
+                <button type="submit">Ajouter</button>
+            </form>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
